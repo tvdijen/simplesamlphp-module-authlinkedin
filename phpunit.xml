@@ -8,7 +8,7 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./lib</directory>
-            <directory suffix=".php">./www</directory>
+            <directory suffix=".php">./tests</directory>
         </whitelist>
     </filter>
     <logging>
