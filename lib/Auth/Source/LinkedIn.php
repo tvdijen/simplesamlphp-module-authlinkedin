@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\authlinkedin\Auth\Source;
 
+use Webmozart\Assert\Assert;
+
 $default = dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/oauth/libextinc/OAuth.php';
 $travis = dirname(dirname(dirname(dirname(__FILE__)))).'/vendor/simplesamlphp/simplesamlphp/modules/oauth/libextinc/OAuth.php';
 
@@ -51,8 +53,8 @@ class LinkedIn extends \SimpleSAML\Auth\Source
      */
     public function __construct($info, $config)
     {
-        assert(is_array($info));
-        assert(is_array($config));
+        Assert::isArray($info);
+        Assert::isArray($config);
 
         // Call the parent constructor first, as required by the interface
         parent::__construct($info, $config);
@@ -87,7 +89,7 @@ class LinkedIn extends \SimpleSAML\Auth\Source
      */
     public function authenticate(&$state)
     {
-        assert(is_array($state));
+        Assert::isArray($state);
 
         // We are going to need the authId in order to retrieve this authentication source later
         $state[self::AUTHID] = $this->authId;
