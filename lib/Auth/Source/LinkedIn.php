@@ -125,6 +125,7 @@ class LinkedIn extends \SimpleSAML\Auth\Source
     /**
      * @param array &$state
      * @return void
+     * @throws \Exception
      */
     public function finalStep(&$state)
     {
@@ -155,6 +156,9 @@ class LinkedIn extends \SimpleSAML\Auth\Source
             ['http' => ['header' => 'x-li-format: json']]
         );
 
+        if (!is_array($userdata)) {
+            throw new \Exception("Unable to collect user info from LinkedIn.");
+        }
         $attributes = $this->flatten($userdata, 'linkedin.');
 
         // TODO: pass accessToken: key, secret + expiry as attributes?
